@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpService } from './http.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PtmModel } from './models/ptmModel';
 import { PanModel } from './models/panModel';
 
@@ -19,14 +19,14 @@ export class AppComponent {
 
   constructor(public httpService: HttpService, private fb: FormBuilder) {
     this.approximateAnnualInterestRateForm = this.fb.group({
-      principal: [1],
-      term: [1],
-      monthlyPayment: [1],
+      principal: new FormControl(null, [Validators.required]),
+      term: new FormControl(null, [Validators.required]),
+      monthlyPayment: new FormControl(null, [Validators.required]),
     });
     this.getMonthlyRepaymentForm = this.fb.group({
-      principal: [1],
-      annualInterestRate: [1],
-      numberOfPaymentPeriods: [1],
+      principal: new FormControl(null, [Validators.required]),
+      annualInterestRate: new FormControl(null, [Validators.required]),
+      numberOfPaymentPeriods: new FormControl(null, [Validators.required]),
     });
   }
 
