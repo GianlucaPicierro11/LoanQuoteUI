@@ -1,12 +1,83 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container-fluid">
+  <div style="text-align:center">
+
+    <h1>
+      Welcome to LoanQuoteApp!
+    </h1>
+
+  </div>
+
+
+  <form [formGroup]="approximateAnnualInterestRateForm">
+
+    <div class="row padding-top">
+      <div class="col-3 offset-1">
+        <mat-form-field class="width-100">
+          <input matInput formControlName="principal" type="number" min="1" max="100000" placeholder="Principal"
+            oninput="validity.valid||(value='');">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="width-100">
+          <input matInput formControlName="term" type="number" min="1" max="100000" placeholder="Term"
+            oninput="validity.valid||(value='');">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="width-100">
+          <input matInput formControlName="monthlyPayment" type="number" min="1" max="100000"
+            placeholder="Monthly Payment" oninput="validity.valid||(value='');">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row align-items-center padding-top">
+      <div class="col text-center">
+        <button mat-raised-button color="primary" type="button" (click)="getApproximateAnnualInterestRate()">
+          Get Approximate Annual Interest Rate
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row padding-top">
+    <div class="col text-center"> Approximate Annual Interest Rate = {{resultAAIR}}</div>
+  </div>
+
+  <form [formGroup]="getMonthlyRepaymentForm">
+
+    <div class="row padding-top">
+      <div class="col-3 offset-1">
+        <mat-form-field class="width-100">
+          <input matInput formControlName="principal" type="number" min="1" max="100000" placeholder="Principal"
+            oninput="validity.valid||(value='');">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="width-100">
+          <input matInput formControlName="annualInterestRate" type="number" min="1" max="100000"
+            placeholder="Annual Interest Rate" oninput="validity.valid||(value='');">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="width-100">
+          <input matInput formControlName="numberOfPaymentPeriods" type="number" min="1" max="100000"
+            placeholder="Number Of Payment Periods" oninput="validity.valid||(value='');">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row align-items-center padding-top">
+      <div class="col text-center">
+        <button mat-raised-button color="primary" type="button" (click)="getMonthlyRepayment()">
+          Get Monthly Repayment
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row padding-top">
+    <div class="col text-center">Monthly Repayment = {{resultMonthlyRepayment}}</div>
+  </div>
+
+  <router-outlet></router-outlet>
 </div>
-
-
-
-<router-outlet></router-outlet>
